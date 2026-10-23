@@ -1,0 +1,44 @@
+{
+  "name": "railbed",
+  "displayName": "Railbed",
+  "version": "1.0.0",
+  "minClientVersions": {
+    "cursor": "3.13.0",
+    "grokbot": "0.30.0",
+    "sand": "0.30.0"
+  },
+  "description": "Build Railbed card checkout, inspect payments and diagnose webhooks, with every change confirmed in Railbed.",
+  "author": {
+    "name": "Railbed by MediaGlobe",
+    "email": "support@railbed.com"
+  },
+  "publisher": "Railbed by MediaGlobe",
+  "homepage": "https://railbed.com/docs/mcp/",
+  "repository": "https://github.com/railbed/cursor-plugin",
+  "license": "MIT",
+  "logo": "assets/logo.png",
+  "keywords": [
+    "railbed",
+    "payments",
+    "checkout",
+    "card payments",
+    "payment links",
+    "webhooks",
+    "merchant api",
+    "high-risk merchants",
+    "usdc",
+    "mcp"
+  ],
+  "category": "integrations",
+  "tags": [
+    "payments",
+    "checkout",
+    "webhooks",
+    "mcp"
+  ],
+  "mcpServers": "./mcp.json",
+  "skills": "./skills/",
+  "rules": "./rules/",
+  "agents": "./agents/",
+  "commands": "./commands/"
+}
