@@ -13,12 +13,13 @@ Infer it from the request and the code; ask only when it is unclear.
 |---|---|---|
 | Hosted checkout | `POST /v1/checkout_sessions`, then redirect to the session `url` | Railbed's page, then `success_url` |
 | Own UI | Create, then `POST /v1/checkout_sessions/:id/start`; show the returned providers | Your screen; the chosen provider's `handoff_url` in a new tab |
+| Embedded checkout for signed-in users | A route the embed calls at Continue: `POST /v1/checkout_sessions` with `checkout` (and `plan`, `option` for a pricing table), the user's `reference` and `metadata`, and an `Idempotency-Key`; answer `{ "session": id }` | The checkout in a frame on your page; the provider in a new tab |
 | Payment links | `POST /v1/payment_links`, or the dashboard | One page for one payer |
 | Webhook receiver | Verify, store the event id, answer 2xx, fulfil in a job | Nothing |
 
 ## Read the current contract
 
-Search with `railbed_docs_search`, then read the matching `page` and `anchor` with `railbed_docs_read`, and cite the returned `url` next to each fact you rely on. Starting pages: `api`, `api/checkout-sessions`, `api/payments`, `guides/hosted-checkout`, `guides/custom-checkout`, `guides/fulfilment`, `webhooks`, `webhooks/signatures`, `testing`. Follow `next_offset` with the same `content_hash`; if the page changed, start again at offset 0. Do not write an endpoint, header, field or algorithm from memory.
+Search with `railbed_docs_search`, then read the matching `page` and `anchor` with `railbed_docs_read`, and cite the returned `url` next to each fact you rely on. Starting pages: `api`, `api/checkout-sessions`, `api/payments`, `guides/hosted-checkout`, `guides/custom-checkout`, `guides/existing-app`, `guides/fulfilment`, `webhooks`, `webhooks/signatures`, `testing`. Follow `next_offset` with the same `content_hash`; if the page changed, start again at offset 0. Do not write an endpoint, header, field or algorithm from memory.
 
 ## Rules that do not bend
 

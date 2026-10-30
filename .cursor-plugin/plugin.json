@@ -1,7 +1,7 @@
 {
   "name": "railbed",
   "displayName": "Railbed",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "minClientVersions": {
     "cursor": "3.13.0",
     "grokbot": "0.30.0",
@@ -14,7 +14,7 @@
   },
   "publisher": "Railbed by MediaGlobe",
   "homepage": "https://railbed.com/docs/mcp/",
-  "repository": "https://github.com/railbed/cursor-plugin",
+  "repository": "https://github.com/Railbed/railbed-cursor-plugin",
   "license": "MIT",
   "logo": "assets/logo.png",
   "keywords": [

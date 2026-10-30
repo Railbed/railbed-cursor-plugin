@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0 — 2026-10-30
+
+- The integration skill covers embedded checkout for signed-in users: the embed asks the merchant's server for a session at Continue, and the server makes it from a saved checkout with `POST /v1/checkout_sessions`. It points the agent at the existing-app guide.
+- Server 1.3.0 returns each checkout's `slug`, the value that request takes as `checkout`.
+- The manifest's `repository` names the renamed public repository, `Railbed/railbed-cursor-plugin`.
+
 ## 1.0.0 — 2026-10-22
 
 - First release for Cursor and Grok Bot.
