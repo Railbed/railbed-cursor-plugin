@@ -28,7 +28,7 @@ Lists return 20 records by default and 50 at most, newest first. Follow `next_cu
 | `failed` | Terminal Test failure |
 | `expired` | Nobody paid in time, or a canceled payment link (`canceled_at` set). Money that arrives late still settles |
 
-`amount` and `currency` are the price. `settlement.value_coin` and `settlement.merchant_received` are what moved, in the coin, and `merchant_received` can be null for a while after `paid`. Report a missing field as unknown, not as zero. Reads do not contact a provider, refresh a status or advance expiry; use `expires_at` when explaining an open record.
+`amount` and `currency` are the price. `settlement.value_coin` and `settlement.merchant_received` are what moved, in the coin, and `settlement.merchant_received_usd` is the merchant's share in US dollars, whatever the coin; either can be null for a while after `paid`. Report a missing field as unknown, not as zero. Reads do not contact a provider, refresh a status or advance expiry; use `expires_at` when explaining an open record.
 
 ## Period totals
 
@@ -38,7 +38,7 @@ Use `railbed_get_payment_summary` for "how much did we take", never a list.
 2. Send `from` and `to` as ISO timestamps with offsets, start inclusive and end exclusive: for example, 21 October 2026 in New York is `2026-10-21T00:00:00-04:00` to `2026-10-22T00:00:00-04:00`. Work out "today" and "yesterday" from the current date, never from this example. Mind daylight-saving changes.
 3. One interval spans at most 31 days. For a longer period, use adjoining intervals that do not overlap and say that each call is its own snapshot. If more than 10,000 payments match, the tool refuses; narrow the interval rather than estimate.
 4. It counts paid payment attempts by `paid_at`, not creation time, and not unique orders.
-5. Report `order_amounts` per currency with no combined or converted figure. Report settlement groups separately by method, network and coin, with their missing-value counts. A reported sum with missing values is not a complete receipt.
+5. Report `order_amounts` per currency with no combined or converted figure. `received_usd` is what reached the business's wallet, in dollars across every coin and network, with its `missing_count`. Report settlement groups separately by method, network and coin, with their missing-value counts. A reported sum with missing values is not a complete receipt.
 6. These are stored records, not a wallet balance or an on-chain audit.
 
 ## Boundaries

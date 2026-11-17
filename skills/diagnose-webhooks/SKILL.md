@@ -8,7 +8,7 @@ description: Investigate Railbed webhook problems. List endpoints and delivery o
 ## Look before anything else
 
 1. `railbed_get_connection`: name the business and mode. Test endpoints receive only Test events and Live endpoints only Live events, so a missing webhook is often in the other mode.
-2. `railbed_list_webhooks`: each endpoint's id, URL (query values redacted), events and whether it is enabled. An endpoint added before September 26, 2026 receives only `payment.paid` and `payment.failed` until its events are edited.
+2. `railbed_list_webhooks`: each endpoint's id, URL (query values redacted), events and whether it is enabled. Check `events` before concluding that an event went missing: an endpoint receives only the types it lists, and an older one may list only `payment.paid` and `payment.failed` until its events are edited.
 3. `railbed_list_webhook_deliveries` with the `endpoint_id`, optionally `status` `pending`, `delivered` or `failed`: event type, payment id, attempts, HTTP status and times. Deliveries carry no payload and no secret.
 
 ## Read the evidence honestly

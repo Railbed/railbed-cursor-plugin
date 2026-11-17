@@ -4,7 +4,7 @@
 
 The official plugin for [Railbed](https://railbed.com), card checkout for online merchants that mainstream processors turn away. It connects Cursor and Grok Bot to Railbed's hosted [Model Context Protocol](https://modelcontextprotocol.io/) server and adds skills, commands and a review agent for building and running a Railbed integration.
 
-Buyers pay by card through independent, licensed providers, and every sale settles as USDC on Polygon to a wallet the merchant controls. Railbed never holds funds.
+Buyers pay by card through independent, licensed providers, and sales settle to a wallet the merchant controls, almost always as USDC on Polygon. Railbed never holds funds.
 
 ## Install
 
@@ -59,7 +59,7 @@ Documentation search works straight away, without signing in.
 }
 ```
 
-Sign-in is OAuth with dynamic client registration and PKCE. Cursor registers itself and opens Railbed's sign-in page; there is no API key, token or client ID to configure. The plugin needs Railbed's MCP server 1.2.0 or later.
+Sign-in is OAuth with dynamic client registration and PKCE. Cursor registers itself and opens Railbed's sign-in page; there is no API key, token or client ID to configure. The plugin needs Railbed's MCP server 1.5.0 or later.
 
 The server's tools fall into four groups. The server is the source of truth for tool names and schemas.
 

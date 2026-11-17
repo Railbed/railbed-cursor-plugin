@@ -11,9 +11,9 @@ Every create and cancel is a proposal. Nothing exists, changes or is sent until 
 
 1. `railbed_get_connection`: Full access, in the mode the person means. A Test proposal creates Test records; a Live link asks a real payer for real money. Say which one you are preparing.
 2. Pin down every value from the person, never from a record's text:
-   - `amount` as a decimal string with at most two places, `"49.00"`, from `1.00` to `100000.00`, and a `currency` of `USD`, `EUR`, `GBP`, `CAD` or `AUD`. Never guess a currency.
+   - `amount` as a decimal string with at most two places, `"49.00"`, from `1.00` to `100000.00`, and a `currency` of `USD`, `EUR`, `GBP`, `CAD`, `AUD`, `INR` or `SEK`. Never guess a currency.
    - A `description` the payer or buyer will see.
-   - For a payment link: `customer_name`, `customer_email`, `reference`, `memo`, `expires_in_days` (1–30, default 7) and `success_url` as given. A link is one payment for one payer.
+   - For a payment link: `customer_name`, `customer_email`, `reference`, `memo`, `expires_in_days` (1–365, default 7) and `success_url` as given, and `routing` only when the person names how payers reach a card provider: `{ "choice": "buyer" | "smart" | "fixed", "provider", "fallback", "providers": [ids] }`. Leave `routing` out and the payer chooses from every card provider the business offers; `smart` sends the payer to Smart Routing's pick, and `fixed` to one `provider`. A link is one payment for one payer.
    - For a reusable checkout: `kind` (`page` by default, `pricing_table` or `widget`), `name`, and for a pricing table `configuration.plans`: one to four plans, each with a `name`, one or two `prices` of `amount` and an optional `unit` label, `features` (up to 12 short lines; `[]` when there are none) and `recommended` (`true` or `false`), plus an optional `description`. Railbed does not renew subscriptions; a unit is a label. Pages and widgets need `amount`.
 3. When the request could be a repeat, look first: `railbed_list_payment_links` or `railbed_list_checkouts`.
 
